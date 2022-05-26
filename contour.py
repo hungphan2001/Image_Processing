@@ -1,13 +1,13 @@
 import cv2
 import numpy as np
-I = cv2.imread('Coins.jpg')
+I = cv2.imread('tao.jpg')
 cv2.imshow("Anh goc", I)
 # 2. Chuyển ảnh I thành ảnh grayscale I_gray
 Igray = cv2.cvtColor(I, cv2.COLOR_BGR2GRAY)
 cv2.imshow("Anh grayscale", Igray)
 # 3. Chuyển từ ảnh Igray sang ảnh nhị phân I_bina
 # - C1: Theo ngưỡng nhị phân
-thresh, I_bina = cv2.threshold(Igray, 90, 255, cv2.THRESH_BINARY)
+thresh, I_bina = cv2.threshold(Igray, 180, 255, cv2.THRESH_BINARY)
 cv2.imshow('anh nhi phan nguong 90', I_bina)
 
 I_copy = I.copy()
@@ -32,7 +32,6 @@ for cnt in contours:
     if cv2.contourArea(cnt) > max_area/2:
         cv2.drawContours(Icc, [cnt], -1, (0, 0, 255), 2)
 cv2.imshow("bo cac contour qua nho", Icc)
-
 
 cv2.waitKey()
 cv2.destroyAllWindows()
